@@ -1,0 +1,92 @@
+[client]
+quick
+socket = /tmp/mysql.sock
+default-character-set = utf8
+port = 3306
+
+[mysqld]
+server-id = 1
+socket = /tmp/mysql.sock
+character-set-server = utf8
+datadir = /www/mysql
+user = mysql
+port = 3306
+max_allowed_packet = 64M
+default-storage-engine = InnoDB
+tmp_table_size = 256M
+max_heap_table_size = 256M
+event_scheduler = 1
+back_log = 256
+max_connections = 1024
+max_connect_errors = 10240
+sync_binlog = 0
+sync_relay_log = 1000
+sync_relay_log_info = 1000 
+wait_timeout = 3600
+net_read_timeout = 600
+net_write_timeout = 600 
+thread_cache_size = 32
+thread_stack = 1024K
+skip-name-resolve
+skip-external-locking
+slave-skip-errors = 1032,1062,126,1114,1146,1048,1396
+
+# -------------- #
+# MyISAM Options #
+# -------------- #
+query_cache_type = OFF
+query_cache_size = 0
+query_cache_limit = 8M
+myisam_sort_buffer_size = 16M
+
+# -------------- #
+# Buffer Options #
+# -------------- #
+bulk_insert_buffer_size = 1024M
+sort_buffer_size = 4M
+join_buffer_size = 4M
+key_buffer_size = 32M
+read_buffer_size = 1M
+read_rnd_buffer_size = 2M
+
+# -------------- #
+# InnoDB Options #
+# -------------- #
+innodb_additional_mem_pool_size ＝ 8M
+innodb_buffer_pool_size = 2G
+innodb_data_file_path = ibdata1:128M:autoextend
+innodb_log_group_home_dir = /www/mysql/
+innodb_flush_log_at_trx_commit = 2
+innodb_log_buffer_size = 64M
+innodb_log_file_size = 512M
+innodb_log_files_in_group = 2
+innodb_lock_wait_timeout = 120
+innodb_file_per_table = 1
+innodb_rollback_on_timeout = 1
+innodb_io_capacity = 200
+innodb_io_capacity_max = 2000
+innodb_read_io_threads = 4 
+innodb_write_io_threads = 4
+
+# --------------- #
+# Logging Options #
+# --------------- #
+binlog_format = MIXED 
+binlog_cache_size = 8M
+expire_logs_days  = 30 
+
+#long_query_time = 1
+#slow_query_log = ON
+#slow_query_log_file = /var/log/mysql/slow.log
+#log_queries_not_using_indexes = ON
+#log-slow-admin-statements = ON
+#log_slow_slave_statements = ON
+log-error = /var/log/mysql/mysql_error.log
+log-bin = /var/log/mysql/binlog
+#relay-log-index = /var/log/mysql/relaylog-index
+#relay-log-info-file = /var/log/mysql/relaylog-info
+#relay-log = /var/log/mysql/relaylog
+
+[mysqldump]
+quick
+max_allowed_packet = 512M
