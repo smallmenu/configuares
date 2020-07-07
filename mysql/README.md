@@ -1,3 +1,4 @@
+```
 [client]
 quick  # 快速导入导出
 socket = /tmp/mysql.sock
@@ -90,3 +91,4 @@ log-bin = /var/log/mysql/binlog  # 主从复制相关
 [mysqldump]
 quick
 max_allowed_packet = 512M
+```
